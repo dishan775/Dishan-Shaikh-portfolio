@@ -108,7 +108,7 @@ const Contact = () => {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.5 }}
-          href="/resume.pdf"
+          href="/Dishan_Shaikh_Resume.pdf"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-4 px-12 py-6 bg-primary text-background rounded-lg font-space font-bold text-xl uppercase tracking-wider hover:bg-transparent hover:text-primary border border-primary hover:shadow-[0_0_20px_rgba(0,212,255,0.4)] transition-all duration-300 group"

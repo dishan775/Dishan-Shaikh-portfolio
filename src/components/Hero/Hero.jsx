@@ -125,7 +125,7 @@ const Hero = () => {
             <a href="#projects" className="px-10 py-5 bg-primary text-background font-space font-bold uppercase tracking-wider rounded border border-primary hover:bg-transparent hover:text-primary hover:shadow-[0_0_20px_rgba(0,212,255,0.6)] transition-all duration-300 text-center text-lg">
               View My Projects
             </a>
-            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="px-10 py-5 bg-transparent text-text-primary font-space font-bold uppercase tracking-wider rounded border border-text-muted hover:border-primary hover:text-primary transition-colors duration-300 text-center text-lg">
+            <a href="/Dishan_Shaikh_Resume.pdf" target="_blank" rel="noopener noreferrer" className="px-10 py-5 bg-transparent text-text-primary font-space font-bold uppercase tracking-wider rounded border border-text-muted hover:border-primary hover:text-primary transition-colors duration-300 text-center text-lg">
               Download Resume
             </a>
           </motion.div>
