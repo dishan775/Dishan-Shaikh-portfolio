@@ -2,6 +2,7 @@ import React, { useRef, useMemo } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { Points, PointMaterial, Line } from '@react-three/drei';
 import * as THREE from 'three';
+import { useTheme } from '../../context/ThemeContext';
 
 const NetworkMesh = () => {
   const groupRef = useRef();
@@ -11,11 +12,10 @@ const NetworkMesh = () => {
   const nodes = useMemo(() => {
     const positions = new Float32Array(nodeCount * 3);
     const colors = new Float32Array(nodeCount * 3);
-    const colorPrimary = new THREE.Color('#00D4FF');
-    const colorSecondary = new THREE.Color('#7C3AED');
+    const colorPrimary = new THREE.Color('#39FF14');
+    const colorSecondary = new THREE.Color('#10B981');
     
     for (let i = 0; i < nodeCount; i++) {
-      // Wide spread across the full viewport
       positions[i * 3] = (Math.random() - 0.5) * 22;
       positions[i * 3 + 1] = (Math.random() - 0.5) * 14;
       positions[i * 3 + 2] = (Math.random() - 0.5) * 6;
@@ -80,7 +80,7 @@ const NetworkMesh = () => {
         <Line 
           key={index}
           points={points}
-          color="#00D4FF"
+          color="#39FF14"
           opacity={0.1}
           transparent
           lineWidth={0.8}
@@ -114,22 +114,30 @@ const AmbientDust = () => {
     <Points ref={pointsRef} positions={particles}>
       <PointMaterial
         transparent
-        color="#ffffff"
+        color="#10B981"
         size={0.02}
         sizeAttenuation={true}
         depthWrite={false}
-        opacity={0.15}
+        opacity={0.3}
       />
     </Points>
   );
 };
 
 const NeuralCanvas = () => {
+  const { theme } = useTheme();
+
   return (
-    <div className="absolute inset-0 w-full h-full z-0">
+    <div 
+      className="absolute inset-0 w-full h-full z-0"
+      style={{ opacity: theme === 'light' ? 0.3 : 1 }}
+    >
       <Canvas 
         camera={{ position: [0, 0, 10], fov: 60 }}
         gl={{ antialias: true, alpha: true }}
+        onCreated={({ gl }) => {
+          gl.setClearColor(0x000000, 0);
+        }}
         style={{ background: 'transparent' }}
       >
         <ambientLight intensity={0.3} />

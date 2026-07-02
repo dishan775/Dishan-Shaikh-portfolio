@@ -1,0 +1,312 @@
+/* ═══════════════════════════════════════════
+   Scale-AI-style Project Cards
+   ═══════════════════════════════════════════ */
+
+/* ─── Horizontal scroll container ─── */
+.project-scroll-container {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding: 1rem 0.5rem 2rem;
+  scrollbar-width: none;           /* Firefox */
+}
+.project-scroll-container::-webkit-scrollbar {
+  display: none;                   /* Chrome / Safari */
+}
+
+/* ─── Card ─── */
+.project-scale-card {
+  position: relative;
+  flex: 0 0 340px;
+  min-height: 440px;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(
+    160deg,
+    rgba(10, 15, 30, 0.95) 0%,
+    rgba(17, 24, 39, 0.9) 100%
+  );
+  border: 1px solid rgba(57, 255, 20, 0.08);
+  border-radius: 16px;
+  padding: 2rem 1.5rem 1.8rem;
+  overflow: hidden;
+  z-index: 0;
+  cursor: default;
+  scroll-snap-align: start;
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* The expanding circle (Scale AI hover effect) */
+.project-scale-card::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: -16px;
+  right: -16px;
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
+  background: linear-gradient(
+    135deg,
+    var(--accent-from, #39FF14),
+    var(--accent-to, #0a2a3f)
+  );
+  transform: scale(1);
+  transform-origin: 50% 50%;
+  transition: transform 0.45s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.project-scale-card:hover::before {
+  transform: scale(34);
+}
+
+.project-scale-card:hover {
+  border-color: rgba(57, 255, 20, 0.25);
+  box-shadow: 0 0 40px rgba(57, 255, 20, 0.08),
+    0 20px 50px rgba(0, 0, 0, 0.35);
+}
+
+/* ─── Corner arrow ─── */
+.project-card-corner {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    135deg,
+    var(--accent-from, #39FF14),
+    var(--accent-to, #0a2a3f)
+  );
+  border-radius: 0 16px 0 24px;
+  z-index: 2;
+}
+.project-card-arrow {
+  color: #fff;
+  font-size: 1rem;
+  margin-top: -2px;
+  margin-right: -2px;
+  font-family: "JetBrains Mono", monospace;
+  opacity: 0.9;
+}
+
+/* ─── Watermark number ─── */
+.project-card-number {
+  position: absolute;
+  bottom: 8px;
+  right: 14px;
+  font-family: "Syne", sans-serif;
+  font-size: 6rem;
+  font-weight: 800;
+  line-height: 1;
+  color: rgba(240, 244, 255, 0.03);
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+  transition: color 0.5s ease;
+}
+.project-scale-card:hover .project-card-number {
+  color: rgba(255, 255, 255, 0.06);
+}
+
+/* ─── Category badge ─── */
+.project-card-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #b0bdd4;
+  margin-bottom: 1rem;
+  transition: color 0.5s ease;
+}
+.project-scale-card:hover .project-card-badge {
+  color: rgba(255, 255, 255, 0.85);
+}
+.project-card-badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ─── Image thumbnail ─── */
+.project-card-img-wrap {
+  width: 100%;
+  height: 130px;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  border: 1px solid rgba(57, 255, 20, 0.06);
+  transition: border-color 0.4s ease;
+}
+.project-scale-card:hover .project-card-img-wrap {
+  border-color: rgba(255, 255, 255, 0.12);
+}
+.project-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.85;
+  transition: opacity 0.4s ease, transform 0.5s ease;
+}
+.project-scale-card:hover .project-card-img {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+/* ─── Title ─── */
+.project-card-title {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #F0F4FF;
+  line-height: 1.2;
+  margin-bottom: 0.3rem;
+  transition: color 0.5s ease;
+}
+.project-scale-card:hover .project-card-title {
+  color: #ffffff;
+}
+
+/* ─── Subtitle ─── */
+.project-card-subtitle {
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.85rem;
+  color: #c0ccdf;
+  margin-bottom: 0.6rem;
+  transition: color 0.5s ease;
+}
+.project-scale-card:hover .project-card-subtitle {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* ─── Description ─── */
+.project-card-desc {
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: #d0d8e8;
+  flex: 1;
+  margin-bottom: 1rem;
+  transition: color 0.5s ease;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.project-scale-card:hover .project-card-desc {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* ─── Tech pills ─── */
+.project-card-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 1.2rem;
+}
+.project-card-tech-pill {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: rgba(57, 255, 20, 0.08);
+  border: 1px solid rgba(57, 255, 20, 0.15);
+  color: #b0bdd4;
+  transition: all 0.5s ease;
+}
+.project-scale-card:hover .project-card-tech-pill {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* ─── CTA button ─── */
+.project-card-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  color: #39FF14;
+  border: 1px solid rgba(57, 255, 20, 0.25);
+  background: rgba(57, 255, 20, 0.05);
+  transition: all 0.4s ease;
+  width: fit-content;
+  z-index: 2;
+  position: relative;
+}
+.project-card-cta:hover {
+  background: rgba(57, 255, 20, 0.15);
+  box-shadow: 0 0 16px rgba(57, 255, 20, 0.25);
+  border-color: rgba(57, 255, 20, 0.5);
+}
+.project-scale-card:hover .project-card-cta {
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+}
+.project-scale-card:hover .project-card-cta:hover {
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 16px rgba(255, 255, 255, 0.15);
+}
+
+/* ─── Interactive Scrollbar ─── */
+.project-scrollbar-track {
+  position: relative;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.project-scrollbar-track:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+.project-scrollbar-thumb {
+  position: absolute;
+  top: -3px;
+  width: 60px;
+  height: 12px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #39FF14, #10B981);
+  box-shadow: 0 0 10px rgba(57, 255, 20, 0.35);
+  transform: translateX(-50%);
+  pointer-events: none;
+  transition: left 0.15s ease-out;
+}
+.project-scrollbar-track:hover .project-scrollbar-thumb {
+  box-shadow: 0 0 18px rgba(57, 255, 20, 0.5);
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 768px) {
+  .project-scale-card {
+    flex: 0 0 290px;
+    min-height: 400px;
+    padding: 1.5rem 1.2rem 1.5rem;
+  }
+  .project-card-title {
+    font-size: 1.25rem;
+  }
+  .project-card-img-wrap {
+    height: 110px;
+  }
+}

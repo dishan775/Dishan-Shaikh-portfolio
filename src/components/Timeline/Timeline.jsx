@@ -119,7 +119,7 @@ const Timeline = () => {
           
           {/* Animated Glowing Line */}
           <motion.div 
-            className="absolute left-1/2 -translate-x-1/2 top-0 w-[2px] rounded-full z-10 origin-top bg-gradient-to-b from-primary via-secondary to-tertiary shadow-[0_0_15px_rgba(0,212,255,0.5)]"
+            className="absolute left-1/2 -translate-x-1/2 top-0 w-[2px] rounded-full z-10 origin-top bg-gradient-to-b from-primary via-secondary to-tertiary shadow-[0_0_15px_rgba(57,255,20,0.5)]"
             style={{ height: lineHeight }}
           />
 

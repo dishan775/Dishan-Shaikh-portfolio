@@ -60,7 +60,7 @@ const Certifications = () => {
       year: "2025",
       completed: true,
       icon: Award,
-      glowColor: '#7C3AED',
+      glowColor: '#2ecc71',
     },
     {
       title: "Indradhanu Hackathon (AI For Climate Change) - Final Round",

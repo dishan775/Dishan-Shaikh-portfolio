@@ -47,8 +47,8 @@
 
 /* Glow Pulse */
 @keyframes glow-pulse {
-  0%, 100% { box-shadow: 0 0 10px rgba(0,212,255,0.2); }
-  50% { box-shadow: 0 0 25px rgba(0,212,255,0.6), 0 0 50px rgba(0,212,255,0.2); }
+  0%, 100% { box-shadow: 0 0 10px rgba(57,255,20,0.2); }
+  50% { box-shadow: 0 0 25px rgba(57,255,20,0.6), 0 0 50px rgba(57,255,20,0.2); }
 }
 .animate-glow-pulse {
   animation: glow-pulse 2s ease-in-out infinite;
@@ -104,7 +104,7 @@
   100% { background-position: 200% 0; }
 }
 .animate-shimmer {
-  background: linear-gradient(90deg, transparent, rgba(0,212,255,0.08), transparent);
+  background: linear-gradient(90deg, transparent, rgba(57,255,20,0.08), transparent);
   background-size: 200% 100%;
   animation: shimmer 3s ease-in-out infinite;
 }

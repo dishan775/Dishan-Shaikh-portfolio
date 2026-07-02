@@ -9,35 +9,33 @@ const AvatarMesh = () => {
   useFrame((state) => {
     const time = state.clock.getElapsedTime();
     if (groupRef.current) {
-      groupRef.current.rotation.y = time * 0.2;
-      groupRef.current.rotation.z = Math.sin(time * 0.5) * 0.1;
+      groupRef.current.rotation.y = time * 0.15;
+      groupRef.current.rotation.z = Math.sin(time * 0.5) * 0.08;
     }
   });
 
   return (
     <group ref={groupRef}>
-      {/* Wireframe Core */}
-      <Icosahedron args={[1.5, 1]}>
-        <meshBasicMaterial color="#00D4FF" wireframe transparent opacity={0.6} />
+      {/* Outer Wireframe (Icosahedron from Spline reference) */}
+      <Icosahedron args={[2.2, 2]}>
+        <meshBasicMaterial color="#a3e635" wireframe transparent opacity={0.4} />
       </Icosahedron>
       
-      {/* Inner Glowing Core */}
-      <Icosahedron args={[1.3, 2]}>
-        <MeshDistortMaterial 
-          color="#7C3AED" 
-          emissive="#7C3AED"
-          emissiveIntensity={0.5}
-          distort={0.4} 
-          speed={2} 
-          transparent 
-          opacity={0.8} 
+      {/* Inner Solid Core (Flat shading like the reference) */}
+      <Icosahedron args={[2.0, 2]}>
+        <meshStandardMaterial 
+          color="#10B981" 
+          emissive="#2ecc71"
+          emissiveIntensity={0.2}
+          flatShading={true}
+          roughness={0.5}
         />
       </Icosahedron>
 
-      {/* Orbiting Spheres (Electrons) */}
-      <OrbitingSphere radius={2.5} speed={1} offset={0} size={0.1} color="#00D4FF" />
-      <OrbitingSphere radius={2.2} speed={-1.5} offset={Math.PI / 2} size={0.08} color="#10B981" />
-      <OrbitingSphere radius={2.8} speed={0.8} offset={Math.PI} size={0.12} color="#7C3AED" axis="z" />
+      {/* Orbiting Spheres (Electrons) - Radius increased to match new size */}
+      <OrbitingSphere radius={3.2} speed={1} offset={0} size={0.12} color="#39FF14" />
+      <OrbitingSphere radius={2.9} speed={-1.5} offset={Math.PI / 2} size={0.1} color="#a3e635" />
+      <OrbitingSphere radius={3.5} speed={0.8} offset={Math.PI} size={0.15} color="#2ecc71" axis="z" />
     </group>
   );
 };
@@ -70,10 +68,17 @@ const OrbitingSphere = ({ radius, speed, offset, size, color, axis = 'y' }) => {
 const AvatarCanvas = () => {
   return (
     <div className="w-full h-full min-h-[400px]">
-      <Canvas camera={{ position: [0, 0, 5], fov: 60 }}>
-        <color attach="background" args={['#0a0f1e']} />
+      <Canvas 
+        camera={{ position: [0, 0, 5], fov: 60 }}
+        gl={{ alpha: true }}
+        onCreated={({ gl }) => {
+          gl.setClearColor(0x000000, 0);
+        }}
+        style={{ background: 'transparent' }}
+      >
+
         <ambientLight intensity={0.2} />
-        <pointLight position={[10, 10, 10]} intensity={1} color="#00D4FF" />
+        <pointLight position={[10, 10, 10]} intensity={1} color="#39FF14" />
         <AvatarMesh />
       </Canvas>
     </div>

@@ -1,0 +1,226 @@
+/* ═══════════════════════════════════════════
+   Uiverse-inspired Social Icons & Contact Cards
+   ═══════════════════════════════════════════ */
+
+/* ─── Social icons bar ─── */
+.social-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 28px;
+  gap: 20px;
+  background: linear-gradient(
+    160deg,
+    rgba(10, 15, 30, 0.9) 0%,
+    rgba(17, 24, 39, 0.85) 100%
+  );
+  border: 1px solid rgba(57, 255, 20, 0.08);
+  border-radius: 20px;
+  backdrop-filter: blur(16px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+/* ─── Single social container ─── */
+.social-container {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  text-decoration: none;
+}
+
+.social-container:hover {
+  background-color: var(--hover-bg, #333);
+  border-color: transparent;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3),
+    0 0 20px color-mix(in srgb, var(--hover-bg, #333) 30%, transparent);
+}
+
+.social-container:active {
+  transform: scale(0.9) translateY(0);
+  transition-duration: 0.15s;
+}
+
+/* ─── Icon inside container ─── */
+.social-icon-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.social-svg {
+  width: 20px;
+  height: 20px;
+}
+.social-svg path {
+  fill: rgba(255, 255, 255, 0.7);
+  transition: fill 0.3s ease;
+}
+.social-container:hover .social-svg path {
+  fill: #ffffff;
+}
+
+/* Slide-in animation on hover */
+.social-container:hover .social-icon-inner {
+  animation: social-slide-in 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+@keyframes social-slide-in {
+  0% {
+    transform: translateY(-40px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* ─── Label tooltip ─── */
+.social-label {
+  position: absolute;
+  bottom: -28px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #b0bdd4;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, bottom 0.3s ease;
+}
+.social-container:hover .social-label {
+  opacity: 1;
+  bottom: -24px;
+}
+
+/* ─── Contact Info Grid ─── */
+.contact-info-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  width: 100%;
+  max-width: 700px;
+}
+
+/* ─── Contact Info Card ─── */
+.contact-info-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 22px;
+  flex: 1 1 280px;
+  max-width: 340px;
+  background: linear-gradient(
+    160deg,
+    rgba(10, 15, 30, 0.9) 0%,
+    rgba(17, 24, 39, 0.85) 100%
+  );
+  border: 1px solid rgba(57, 255, 20, 0.08);
+  border-radius: 14px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.35s ease;
+  backdrop-filter: blur(12px);
+}
+.contact-info-card:hover {
+  border-color: rgba(57, 255, 20, 0.25);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25),
+    0 0 15px rgba(57, 255, 20, 0.08);
+}
+
+.contact-info-icon {
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: rgba(57, 255, 20, 0.08);
+  color: #39FF14;
+  transition: all 0.35s ease;
+}
+.contact-info-card:hover .contact-info-icon {
+  background: rgba(57, 255, 20, 0.15);
+  transform: scale(1.08);
+}
+
+.contact-info-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+.contact-info-label {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #6B7A99;
+}
+.contact-info-value {
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.85rem;
+  color: #d0d8e8;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 0.3s ease;
+}
+.contact-info-card:hover .contact-info-value {
+  color: #39FF14;
+}
+
+.contact-info-arrow {
+  margin-left: auto;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 1rem;
+  color: rgba(57, 255, 20, 0.3);
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+.contact-info-card:hover .contact-info-arrow {
+  color: #39FF14;
+  transform: translateX(4px);
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 640px) {
+  .social-card {
+    padding: 16px 20px;
+    gap: 14px;
+    border-radius: 16px;
+  }
+  .social-container {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+  }
+  .social-svg {
+    width: 17px;
+    height: 17px;
+  }
+  .contact-info-card {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+}
