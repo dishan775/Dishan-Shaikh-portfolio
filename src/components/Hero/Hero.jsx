@@ -69,7 +69,7 @@ const Hero = () => {
     const chars = headlineRef.current.querySelectorAll('.char');
     gsap.fromTo(chars, 
       { opacity: 0, y: 50, rotateX: -90 },
-      { opacity: 1, y: 0, rotateX: 0, stagger: 0.05, duration: 1, ease: "back.out(1.7)", delay: 3 }
+      { opacity: 1, y: 0, rotateX: 0, stagger: 0.05, duration: 1, ease: "back.out(1.7)", delay: 0.2 }
     );
   }, []);
 
@@ -119,7 +119,7 @@ const Hero = () => {
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 3.8, duration: 0.8 }}
+            transition={{ delay: 1.0, duration: 0.8 }}
             className="font-sans text-lg md:text-xl text-text-muted max-w-xl mb-12 leading-relaxed text-highlighter"
           >
             Building intelligent systems at the intersection of AI, data, and real-world impact.<br/>
@@ -130,7 +130,7 @@ const Hero = () => {
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 4.2, duration: 0.8 }}
+            transition={{ delay: 1.3, duration: 0.8 }}
             className="flex flex-col sm:flex-row gap-5 mb-12"
           >
             <a href="#projects" className="px-8 py-4 bg-primary text-white font-space font-bold uppercase tracking-wider rounded border border-primary hover:bg-transparent hover:text-primary transition-all duration-300 text-center">
@@ -145,7 +145,7 @@ const Hero = () => {
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 4.5, duration: 1 }}
+            transition={{ delay: 1.6, duration: 1 }}
             className="flex gap-5"
           >
             {[

@@ -50,7 +50,7 @@ const Navbar = () => {
     <motion.nav
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ delay: 2.5, duration: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
+      transition={{ delay: 0.1, duration: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${
         scrolled 
           ? 'py-3' 
