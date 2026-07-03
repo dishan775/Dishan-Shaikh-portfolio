@@ -119,7 +119,7 @@ const Hero = () => {
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.0, duration: 0.8 }}
+            transition={{ delay: 0.2, duration: 0.8 }}
             className="font-sans text-lg md:text-xl text-text-muted max-w-xl mb-12 leading-relaxed text-highlighter"
           >
             Building intelligent systems at the intersection of AI, data, and real-world impact.<br/>
@@ -130,7 +130,7 @@ const Hero = () => {
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.3, duration: 0.8 }}
+            transition={{ delay: 0.3, duration: 0.8 }}
             className="flex flex-col sm:flex-row gap-5 mb-12"
           >
             <a href="#projects" className="px-8 py-4 bg-primary text-white font-space font-bold uppercase tracking-wider rounded border border-primary hover:bg-transparent hover:text-primary transition-all duration-300 text-center">
@@ -145,7 +145,7 @@ const Hero = () => {
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 1.6, duration: 1 }}
+            transition={{ delay: 0.4, duration: 1 }}
             className="flex gap-5"
           >
             {[
@@ -176,7 +176,7 @@ const Hero = () => {
       <motion.div 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 5, duration: 1 }}
+        transition={{ delay: 0.6, duration: 1 }}
         className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
       >
         <span className="text-xs font-space text-text-muted tracking-widest uppercase">Scroll</span>
