@@ -93,7 +93,22 @@ const Hero = () => {
         </div>
 
         {/* Right side — Content */}
-        <div className="w-full lg:w-[52%] flex flex-col justify-center items-start pt-10 lg:pt-0 order-1 lg:order-2">
+        <div className="relative w-full lg:w-[52%] flex flex-col justify-center items-start pt-10 lg:pt-0 order-1 lg:order-2">
+          
+          {/* 3D Character Spline - extremely tall canvas to force vertical zoom out so legs appear */}
+          <div className="absolute right-0 lg:-right-10 top-0 lg:-top-10 w-[600px] h-[1200px] md:w-[800px] md:h-[1600px] scale-[0.12] md:scale-[0.15] origin-top-right z-50 pointer-events-auto hidden sm:block">
+            <spline-viewer 
+              style={{ 
+                width: '100%', 
+                height: '100%', 
+                backgroundColor: 'transparent',
+                filter: 'drop-shadow(0 0 50px rgba(34, 197, 94, 1)) hue-rotate(110deg) saturate(1.5)'
+              }}
+              className="w-full h-full bg-transparent" 
+              url="https://prod.spline.design/FVZWbQH2B6ndj9UU/scene.splinecode" 
+              events-target="global"
+            ></spline-viewer>
+          </div>
 
           {/* Headline */}
           <h1 
